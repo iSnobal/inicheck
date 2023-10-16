@@ -32,21 +32,20 @@ jobs:
         with:
           path: dist/*.tar.gz
 
-  upload_pypi:
+  pypi-publish:
     needs: [build_dist]
+    name: upload release to PyPI
     runs-on: ubuntu-latest
-    # upload to PyPI on every tag starting with 'v'
-    # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
-    # alternatively, to publish when a GitHub Release is created, use the following rule:
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
     if: github.event_name == 'release' && github.event.action == 'published'
     steps:
+      # retrieve your distributions here
       - uses: actions/download-artifact@v2
         with:
-          name: artifact
-          path: dist
+            name: artifact
+            path: dist
 
-      - uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_password }}
-          # To test: repository_url: https://test.pypi.org/legacy/
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
