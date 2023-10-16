@@ -15,7 +15,7 @@ with open('requirements.txt') as req_file:
     requirements = req_file.read()
 
 setup(
-    name='inicheck',
+    name='m3w-inicheck',
     description="inicheck is an high level configuration file checker "
                 "enabling developers tight control over their users "
                 "configuration files",
