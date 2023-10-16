@@ -16,6 +16,7 @@ with open('requirements.txt') as req_file:
 
 setup(
     name='m3w-inicheck',
+    version='0.0.0',
     description="inicheck is an high level configuration file checker "
                 "enabling developers tight control over their users "
                 "configuration files",
