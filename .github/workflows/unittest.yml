@@ -14,7 +14,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.7"
+          python-version: "3.9"
 
       - name: Install dependencies
         run: |
@@ -25,35 +25,12 @@ jobs:
         run: |
           flake8 inicheck
 
-  coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.7"
-
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install coverage coveralls PyYAML pytest
-          python3 -m pip install -r requirements.txt
-
-      - name: Run coverage
-        run: |
-          make coverage
-          coveralls --service=github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   unittest:
-    needs: [flake8, coverage]
+    needs: [flake8]
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: [3.7, 3.8, 3.9, '3.10', '3.11']
+        python-version: [3.8, 3.9, '3.10', '3.11']
     runs-on: ${{ matrix.os }}
 
     steps:

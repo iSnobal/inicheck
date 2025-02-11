@@ -4,14 +4,11 @@ Welcome to inicheck
 
 
 .. image:: https://img.shields.io/pypi/v/inicheck.svg
-        :target: https://pypi.python.org/pypi/inicheck
+        :target: https://pypi.org/project/m3w-inicheck/
 
 .. image:: https://readthedocs.org/projects/inicheck/badge/?version=latest
         :target: https://inicheck.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
-
-.. image:: https://coveralls.io/repos/github/USDA-ARS-NWRC/inicheck/badge.svg?branch=master
-	:target: https://coveralls.io/github/USDA-ARS-NWRC/inicheck?branch=master
 
 
 What is inicheck?
