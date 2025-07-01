@@ -92,8 +92,11 @@ class ChangeLog(object):
                                 break
 
                     # Valid item check whe valid section provided
-                    elif (current[1] in action_kw or
-                          current[1] in mcfg.cfg[current[0]].keys()):
+
+                    elif (
+                        current[1] in action_kw
+                        or current[1] in mcfg.cfg[current[0]].keys()
+                    ):
                         valids.append(True)
 
                 # Check for valid properties

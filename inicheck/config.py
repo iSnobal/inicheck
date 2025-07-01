@@ -112,24 +112,27 @@ class UserConfig():
                                 for v in vals:
                                     # Sections
 
-                                    if (condition[0] == 'any' or
-                                            condition[0] == section):
+                                    if condition[0] == "any" or condition[0] == section:
 
                                         if FULL_DEBUG:
                                             print("Section Gate {0} == {1}"
                                                   "".format(condition[0],
                                                             section))
                                         # Items
-                                        if (condition[1] == 'any' or
-                                                condition[1] == item):
+                                        if (
+                                            condition[1] == "any"
+                                            or condition[1] == item
+                                        ):
                                             if FULL_DEBUG:
                                                 print(
                                                     "\t\tItem Gate {0} == {1}"
                                                     "".format(condition[1],
                                                               item))
                                             # Values
-                                            if (condition[2] == 'any' or
-                                                    condition[2] == v):
+                                            if (
+                                                condition[2] == "any"
+                                                or condition[2] == v
+                                            ):
                                                 if FULL_DEBUG:
                                                     print(
                                                         "\t\t\t\tValue Gate "
@@ -149,8 +152,10 @@ class UserConfig():
                         conditions_met += 1
                         triggered = False
 
-                if (conditions_met == len(recipe_entry.conditions) and
-                        len(recipe_entry.conditions) != 0):
+                if (
+                    conditions_met == len(recipe_entry.conditions)
+                    and len(recipe_entry.conditions) != 0
+                ):
                     conditions_met = 0
                     self.recipes.append(r)
 
@@ -436,10 +441,10 @@ class MasterConfig():
                     self.header = getattr(i, '__config_header__')
 
                 # Search for custom checkers
-                if hasattr(i, '__config_checkers__'):
-                    self.checker_modules.append(m + '.' +
-                                                getattr(i,
-                                                        '__config_checkers__'))
+                if hasattr(i, "__config_checkers__"):
+                    self.checker_modules.append(
+                        m + "." + getattr(i, "__config_checkers__")
+                    )
                 # Grab ayny change logs
                 if hasattr(i, "__config_changelog__"):
                     self.changelogs.append(

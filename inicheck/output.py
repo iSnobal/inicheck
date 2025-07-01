@@ -74,7 +74,7 @@ def generate_config(config_obj, fname, cli=False):
             # Add section items and values
             for k in config[section].keys():
                 v = config[section][k]
-                if type(v) == list:
+                if isinstance(v, list):
                     astr = ", ".join(str(c).strip() for c in v)
                 else:
                     astr = str(v)
@@ -172,7 +172,7 @@ def print_recipe_summary(lst_recipes):
         print("\tConditionals:")
         for n, t in r.triggers.items():
             for i, c in enumerate(t.conditions):
-                if type(c) == list:
+                if isinstance(c, list):
                     c = ", ".join(c)
                 if i == 0:
                     print(msg.format(n, c))
@@ -190,7 +190,7 @@ def print_cfg_for_recipe(cfg, fmt, hdr=None):
 
     for section in cfg.keys():
         for item, value in cfg[section].items():
-            if type(value) != list:
+            if not isinstance(value, list):
                 v = [value]
             else:
                 v = value
